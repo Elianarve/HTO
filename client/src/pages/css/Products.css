@@ -1,0 +1,120 @@
+.form-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% auto;
+    padding: 2%;
+    width: 30%;
+    border: 1px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #003C43;
+    font-family: 'Arial', sans-serif;
+}
+
+.form-product h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    background-color: #003C43;
+    color: #77B0AA;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 15px;
+    background-color: #77B0AA;
+}
+
+.label-item {
+    margin-bottom: 5px;
+    font-weight: bold;
+    background-color: #77B0AA;
+    color: #003C43;
+
+}
+
+.items input, .items textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: #dbd8d8c9;
+    color: #003C43;
+}
+
+.items input:focus, .items textarea:focus {
+    border-color: #fa061a;
+    outline: none;
+}
+
+.error-message {
+    color: #FF0000;
+    font-size: 0.85em;
+    margin-top: 5px;
+}
+
+.button-forms {
+    width: 80%;
+    padding: 10px;
+    background-color: #77B0AA;
+    color: #003C43;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.button-forms::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease;
+    border-radius: 50%;
+}
+
+.button-forms:hover {
+    transform: scale(1.1);
+    background-color: #41B06E;
+}
+
+.button-forms:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.img-tools{
+    width: 20%;
+}
+
+.container-img{
+    display: flex;
+    background-color: #77B0AA;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 4%;
+}
+
+.delete-img-btn{
+    height: 20%;
+    background-color: #003C43;
+    color: #77B0AA;
+    cursor: pointer;
+    padding: 2%;
+    font-size: 0.9rem;
+}
+
+.delete-img-btn:hover{
+    background-color: #77B0AA;
+    color: #003C43;
+}
