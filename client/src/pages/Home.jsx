@@ -5,6 +5,7 @@ import delte from '../assets/delte.svg';
 import edit from '../assets/edit.svg';
 import { useNavigate } from 'react-router-dom';
 import SearchBar from '../components/search/Search';
+import Swal from 'sweetalert2';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -34,7 +35,7 @@ const Home = () => {
       try {
         const productsData = await getProducts();
         setProducts(productsData);
-        setFilteredProducts(productsData);
+        setFilteredProducts(productsData);       
       } catch (error) {
         console.error("Error:", error);
       }
@@ -67,7 +68,7 @@ const Home = () => {
                 <td className="td-wrapper-img"><img className='img-tool-home' src={product.image} alt="img-product" onClick={() => handleClick(product.image)} /></td>
                 <td className="td-wrapper">{product.name}</td>
                 <td className="td-wrapper">{product.description}</td>
-                <td className="td-wrapper">{product.stock}</td>
+                <td className="td-wrapper" style={{ color: product.stock === 1 ? 'red' : 'black' }}>{product.stock}</td>
                 <td className="td-wrapper-icons">
                   <button className='button-icon-edit' onClick={() => navigate(`/update/${product.id}`)}><img className='img-icon-edit' src={edit} alt="icon-edit" /></button>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
