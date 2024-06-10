@@ -1,4 +1,5 @@
 import ProductsModel from "../models/productsModel.js";
+import searchModel from "../helpers/searchHelper.js";
 
 export const getProducts = async(req, res) => {
     try {
@@ -48,3 +49,14 @@ export const getOneProducts = async (req, res) =>{
         res.status(500).json({error: 'Internal Server Error'});
     }   
 }
+
+export const searchProducts = async (req, res) => {
+    const searchText = req.query.searchText;
+    try {
+        const searchResults = await searchModel(ProductsModel, 'name', 'description', searchText);
+        res.json(searchResults);
+    } catch (error) {
+        console.error('Error al buscar :', error);
+        res.status(500).json({ error: 'Error al buscar' });
+    }
+};

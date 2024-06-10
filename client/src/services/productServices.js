@@ -16,7 +16,7 @@ export const getProducts = async () => {
 
 export const getOneProduct = async (id) => {
     try {
-        const response = await axios.get(`${API_URL_AE}/${id}`);
+        const response = await axios.get(`${URL}/${id}`);
         return response;
     } catch (error) {
         console.error("Error", error);
@@ -24,33 +24,12 @@ export const getOneProduct = async (id) => {
     }
 };
 
-
-// export const deleteProduct = async (id) => {
-//     try {
-//         const response = await axios.delete(`${URL}/${id}`);
-//         const confirmDelete = await Swal.fire({
-//             title: '¿Estás seguro que deseas borrar el producto?',
-//             showCancelButton: true,
-//             confirmButtonColor: '#fb005a',
-//             cancelButtonColor: '#171717',
-//             confirmButtonText: 'Sí, eliminar',
-//             cancelButtonText: 'Cancelar'
-//         });
-//         if (confirmDelete && response.status === 200) {
-//             Swal.fire('Eliminado correctamente');
-//         }
-//     } catch (error) {
-//         console.error("Error al eliminar", error);
-//         throw error;
-//     }
-// };
-
 export const deleteProduct = async (id) => {
     try {
         const confirmDelete = await Swal.fire({
             title: '¿Estás seguro que deseas borrar el producto?',
             showCancelButton: true,
-            confirmButtonColor: '#fb005a',
+            confirmButtonColor: '#FA6649',
             cancelButtonColor: '#171717',
             confirmButtonText: 'Sí, eliminar',
             cancelButtonText: 'Cancelar'

@@ -4,9 +4,11 @@ import { deleteProduct, getProducts } from '../services/productServices';
 import delte from '../assets/delte.svg';
 import edit from '../assets/edit.svg';
 import { useNavigate } from 'react-router-dom';
+import SearchBar from '../components/search/Search';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [imgZoom, setImgZoom] = useState(false);
   const navigate = useNavigate();
@@ -15,51 +17,62 @@ const Home = () => {
     setSelectedImage(image);
     setImgZoom(true);
     window.open(image, '_blank');
-};
+  };
+
+  const handleSearch = (searchTerm) => {
+    const filteredResults = products.filter((product) => {
+      return (
+        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+    setFilteredProducts(filteredResults);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const productsData = await getProducts();
         setProducts(productsData);
+        setFilteredProducts(productsData);
       } catch (error) {
         console.error("Error:", error);
       }
     };
-  
+
     fetchProducts();
   }, []);
 
-
   return (
     <div className='home-container'>
-       <div className="table-container">
+      <div className="table-container">
+        <SearchBar onSearch={handleSearch} />
         <table className="responsive-table">
           <thead className="thead-home">
             <tr className="title-tr-home">
+              <th className="title-th-home">ID</th>
               <th className="title-th-home">IMAGEN</th>
-              <th className="title-th-home">ID PRODUCTO</th>
               <th className="title-th-home">NOMBRE</th>
               <th className="title-th-home">DESCRIPCIÓN</th>
-              <th className="title-th-home">UNIDADES</th>
+              <th className="title-th-home">STOCK</th>
               <th className="title-th-home">ACCIONES</th>
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <tr
                 className="table-wrapper"
                 key={product.id}>
-                <td className="td-wrapper-img"><img className='img-tool-home' src={product.image} alt="img-product" onClick={() => handleClick(product.image)}/></td>
                 <td className="td-wrapper">{product.id}</td>
-                <td className="td-wrapper">{product.description}</td>
+                <td className="td-wrapper-img"><img className='img-tool-home' src={product.image} alt="img-product" onClick={() => handleClick(product.image)} /></td>
                 <td className="td-wrapper">{product.name}</td>
+                <td className="td-wrapper">{product.description}</td>
                 <td className="td-wrapper">{product.stock}</td>
                 <td className="td-wrapper-icons">
-                  <button><img className='img-icon' src={edit} alt="icon-edit" /></button>
+                  <button className='button-icon-edit' onClick={() => navigate(`/update/${product.id}`)}><img className='img-icon-edit' src={edit} alt="icon-edit" /></button>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <button onClick={()=> {deleteProduct(product.id).then(()=> navigate(0) )}}><img className='img-icon' src={delte} alt="icon-delete" /></button>
-                  </td>
+                  <button className='button-icon-delete' onClick={() => { deleteProduct(product.id).then(() => navigate(0)) }}><img className='img-icon-delete' src={delte} alt="icon-delete" /></button>
+                </td>
               </tr>
             ))}
           </tbody>
