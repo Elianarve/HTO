@@ -1,4 +1,4 @@
-import ProductsModel from "../models/productsModel.js";
+import ProductsModel from "../models/ProductsModel.js";
 import searchModel from "../helpers/searchHelper.js";
 
 export const getProducts = async(req, res) => {
