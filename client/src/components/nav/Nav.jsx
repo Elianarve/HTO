@@ -1,4 +1,4 @@
-import logo from '../../assets/logoHto.png';
+import logo from '../../assets/logoHto2.png';
 import '../nav/Nav.css';
 import { Link } from 'react-router-dom';
 

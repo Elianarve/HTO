@@ -22,7 +22,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 20px; 
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     text-align: center;
   }
 
@@ -32,12 +32,12 @@
 
   .table-container {
     width: 100%;
-    margin-top: 5%;
   }
 
   .responsive-table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 5%;
   }
 
   .td-wrapper-icons{
