@@ -1,7 +1,8 @@
 import axios from "axios";
 import Swal from 'sweetalert2';
 
-const URL = 'http://localhost:5000/product';
+// const URL = 'http://localhost:5000/product';
+const URL = 'https://hto-mvbs.onrender.com/product';
 
 export const getProducts = async () => {
     try {
