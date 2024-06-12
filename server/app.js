@@ -2,7 +2,7 @@ import connection_db from "./database/connection_db.js";
 import express from 'express';
 import {PORT} from './config.js';
 import cors from 'cors';
-import ProductsModel from "./models/productsModel.js";
+import ProductsModel from "./models/ProductsModel.js";
 import productsRouter from './routes/productsRouter.js';
 
 const app = express();
