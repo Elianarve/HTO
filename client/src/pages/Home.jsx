@@ -99,8 +99,8 @@ const Home = () => {
                 className="table-wrapper"
                 key={product.id}>
                 <td className="td-wrapper-img"><img className='img-tool-home' src={product.image} alt="img-product" onClick={() => handleClick(product.image)} /></td>
-                <td className="td-wrapper td-name">{product.name}</td>
-                <td className="td-wrapper td-description">{product.description}</td>
+                <td className="td-wrapper td-name" title={product.name}>{product.name}</td>
+                <td className="td-wrapper td-description" title={product.description}>{product.description}</td>
                 <td className="td-wrapper" style={{ color: product.stock === 0 || product.stock === 1 ? 'red' : 'green' && product.stock >= 4 ? 'green' : 'blue', fontWeight: product.stock === 0 ? 'bold' : 'bold', fontSize: product.stock === 1 ? '3em' : '3em'}}>{product.stock}</td>
                 <td className="td-wrapper-icons">
                   <button className='button-icon-edit' onClick={() => navigate(`/update/${product.id}`)}><img className='img-icon-edit' src={edit} alt="icon-edit" /></button>
